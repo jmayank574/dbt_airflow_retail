@@ -3,3 +3,7 @@ target/
 dbt_packages/
 logs/
 .env
+
+# Airflow auto-generates this on container start (contains a fernet_key
+# secret used to encrypt connection passwords) - never commit it.
+airflow/config/airflow.cfg

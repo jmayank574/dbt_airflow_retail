@@ -8,6 +8,8 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "apache-airflow>=3.3.2",
+    "databricks-sdk>=0.47.0",
     "dbt-core>=1.12.3",
     "dbt-databricks>=1.10.9",
 ]
