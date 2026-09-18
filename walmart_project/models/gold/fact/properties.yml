@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: >
+      Fact table for sales analytics. Grain: one row per order line
+      (order_item_id). Built from silver_b.obt_b.
+    columns:
+      - name: order_item_id
+        description: "Order line identifier - the grain of this table."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Parent order this line belongs to."
+        data_tests:
+          - not_null
+
+      - name: customer_id
+        description: "Customer who placed the order."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+
+      - name: product_id
+        description: "Product sold on this order line."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+
+      - name: store_id
+        description: "Store the order was placed at."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_stores')
+              field: store_id

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: obt_b
+    description: >
+      One Big Table for sales analytics. Grain: one row per order line
+      (order_item_id). Built by joining orders -> order_items -> products,
+      plus the order's customer and store. employees_t is deliberately excluded
+      (no order -> employee link in the source).
+    columns:
+      - name: order_item_id
+        description: "Order line identifier - the grain of this table."
+        data_tests:
+          - unique
+      - name: order_id
+        description: "Parent order. Repeats across the order's lines."
+        data_tests:
+          - not_null

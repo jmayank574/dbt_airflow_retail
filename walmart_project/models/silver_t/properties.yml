@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: products_t
+    description: "This table contains the product information for Walmart's products."
+    columns:
+      - name: product_id
+        description: "The unique identifier for each product."
+        data_tests:
+          - not_null
+          - unique
+      - name: price
+        description: "The price of the product."
+        data_tests:
+          - greater_than:
+              value: 0
+
+  - name: orders_t
+    description: "This table contains the order information for Walmart's orders."
+    columns:
+      - name: order_id
+        description: "The unique identifier for each order."
+        data_tests:
+          - not_null
+          - unique
