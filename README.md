@@ -33,7 +33,7 @@ Airflow (orchestrate DAG, daily 11am UTC)
 | `walmart_project/models/gold/fact/fact_orders.sql` | Fact table, grain = order line |
 | `walmart_project/airflow/` | Airflow 3.3.2 docker-compose stack orchestrating the pipeline |
 | `walmart_project/airflow/dags/orchestrate.py` | The DAG: triggers the Databricks ingestion job, then runs dbt layer-by-layer with a test after each layer |
-| `.claude/skills/` | Claude Code skills for this project |
+| `.claude/skills/walmart-pipeline/` | Claude Code skill documenting this pipeline |
 
 ## Running
 
