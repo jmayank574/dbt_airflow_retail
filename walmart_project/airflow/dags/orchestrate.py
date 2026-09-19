@@ -1,6 +1,13 @@
 from airflow.sdk import dag, task
+import pendulum
 
-@dag
+
+@dag(
+        dag_id="orchestrate",
+        schedule= "0 11 * * *",
+        catchup=False,
+        start_date=pendulum.datetime(2024, 9, 19, tz="UTC")
+)
 def orchestrate():
     @task
     def ingest_cdc():
